@@ -143,6 +143,7 @@ let audio_fail = new Audio('audio/wrong_answer.mp3');
 
 function render() {
     document.getElementById('card').innerHTML = createStart();
+    document.getElementById('navbar').innerHTML = createNavbar();
     document.getElementById('next-button').classList.add('d-none');
 }
 
@@ -160,6 +161,20 @@ function createStart() {
         </div>
     </div>
 `
+}
+
+function createNavbar() {
+    return `
+    <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.png" onclick="render()">
+                </a>
+                <div class="navbar-brand-themes">
+                    <span class="category" onclick="onclick=init()">Allgemeine Fragen</span>
+                    <span class="category" onclick="onclick=initMovies()">Filme</span>
+                </div>
+            </div>
+    `
 }
 
 function init() {
