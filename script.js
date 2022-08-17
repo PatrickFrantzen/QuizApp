@@ -136,7 +136,7 @@ let questions = [
     },
 ];
 
-let j = 0;
+
 let numOfRightAnswers = 0;
 let audio_success = new Audio('audio/success.mp3');
 let audio_fail = new Audio('audio/wrong_answer.mp3');
@@ -179,19 +179,41 @@ function createNavbar() {
 
 function init() {
     let i = 0;
+    let j = 0;
     document.getElementById('card').innerHTML = createQuestionCard(i, j);
     document.getElementById('next-button').classList.remove('d-none');
-    document.getElementById('next-button').innerHTML = createNextButton(i);
-    createPercentage(i);
+    document.getElementById('next-button').innerHTML = createNextButton(i, j);
+    document.getElementById('navbar').innerHTML = createNavbar();
+    createPercentage(i, j);
+    allQuestions(i);
+}
+
+function common(i, j) {
+    document.getElementById('card').innerHTML = createQuestionCard(i, j);
+    document.getElementById('next-button').classList.remove('d-none');
+    document.getElementById('next-button').innerHTML = createNextButton(i, j);
+    document.getElementById('navbar').innerHTML = createNavbar();
+    createPercentage(i, j);
     allQuestions(i);
 }
 
 function initMovies() {
     let i = 1;
+    let j = 0;
     document.getElementById('card').innerHTML = createQuestionCard(i, j);
     document.getElementById('next-button').classList.remove('d-none');
-    document.getElementById('next-button').innerHTML = createNextButton(i);
-    createPercentage(i);
+    document.getElementById('next-button').innerHTML = createNextButton(i, j);
+    document.getElementById('navbar').innerHTML = createNavbar();
+    createPercentage(i, j);
+    allQuestions(i);
+}
+
+function movies(i, j) {
+    document.getElementById('card').innerHTML = createQuestionCard(i, j);
+    document.getElementById('next-button').classList.remove('d-none');
+    document.getElementById('next-button').innerHTML = createNextButton(i, j);
+    document.getElementById('navbar').innerHTML = createNavbar();
+    createPercentage(i, j);
     allQuestions(i);
 }
 
@@ -202,34 +224,34 @@ function createQuestionCard(i, j) {
     <span>${questions[i].quiz[j]['question']}</span> 
     </div>
 
-    <div id="answer_1${i}" class="card-body card-answer card-body-bottomline card-hover" onclick="answer(1, ${i})">
+    <div id="answer_1${i}" class="card-body card-answer card-body-bottomline card-hover" onclick="answer(1, ${i}, ${j})">
     <span>${questions[i].quiz[j]['answer_1']}</span> 
     </div>
 
-    <div id="answer_2${i}" class="card-body card-answer card-body-bottomline card-hover" onclick="answer(2, ${i})">
+    <div id="answer_2${i}" class="card-body card-answer card-body-bottomline card-hover" onclick="answer(2, ${i}, ${j})">
     <span>${questions[i].quiz[j]['answer_2']}</span> 
     </div>
 
-    <div id="answer_3${i}" class="card-body card-answer card-body-bottomline card-hover" onclick="answer(3, ${i})">
+    <div id="answer_3${i}" class="card-body card-answer card-body-bottomline card-hover" onclick="answer(3, ${i}, ${j})">
     <span>${questions[i].quiz[j]['answer_3']}</span> 
     </div>
 
-    <div id="answer_4${i}" class="card-body card-answer card-hover" onclick="answer(4, ${i})">
+    <div id="answer_4${i}" class="card-body card-answer card-hover" onclick="answer(4, ${i}, ${j})">
     <span>${questions[i].quiz[j]['answer_4']}</span> 
     </div>
     <div class="card-footer">
     <span><b id="actualQuestion">${j + 1}</b> von <b id="allQuestions"></b> Fragen</span>
     <div class="progress">
     <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-        style="width: 75%"></div>
+        style="width: 0%"></div>
 </div>
     </div>
     `
 }
 
-function createNextButton(i) {
+function createNextButton(i, j) {
     return `
-    <button type="button" id="next" class="btn btn-outline-secondary" onclick="nextQuestion(${i})" disabled>
+    <button type="button" id="next" class="btn btn-outline-secondary" onclick="nextQuestion(${i}, ${j})" disabled>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
     <path fill-rule="evenodd"
     d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
@@ -243,7 +265,7 @@ function allQuestions(i) {
     document.getElementById('allQuestions').innerHTML = questions[i].quiz.length;
 }
 
-function answer(selection, i) {
+function answer(selection, i, j) {
     let idOfRightAnswer = `answer_${questions[i].quiz[j]['right_answer']}${i}`;
     if (selection == questions[i].quiz[j]['right_answer']) {
         document.getElementById(`answer_${selection}${i}`).classList.add('success');
@@ -258,22 +280,22 @@ function answer(selection, i) {
     disableAnswers(i);
 }
 
-function nextQuestion(i) {
+function nextQuestion(i, j) {
     j++;
-    finished(i);
+    finished(i, j);
 }
 
-function finished(i) {
+function finished(i, j) {
     if (j > 6) {
         document.getElementById('card').innerHTML = createEndCard(i);
         j = -1;
         numOfRightAnswers = 0;
     } else {
         if (i == 0) {
-            init(i);
+            common(i, j);
         document.getElementById('next').disabled = true;
         } else {
-            initMovies(i)
+            movies(i, j);
             document.getElementById('next').disabled = true;
         }
     }
@@ -301,7 +323,7 @@ function createEndCard(i) {
     `
 }
 
-function createPercentage(i) {
+function createPercentage(i, j) {
     let percentage = j / questions[i].quiz.length;
     percentage = Math.round(percentage * 100);
     document.getElementById('progress-bar').innerHTML = `${percentage} % `;
