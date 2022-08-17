@@ -234,6 +234,13 @@ body {
     margin-top: 10px;
 }
 
+@media screen and (max-width:992px) {
+    .quiz-area {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
 @media screen and (max-width:768px) {
     .navbar {
         width: 130px;
@@ -244,16 +251,6 @@ body {
         height: 90px;
     }
     
-    .inner-endscreen {
-        font-size: 14px;
-    }
-    
-    .outer-endscreen {
-        margin-left:0;
-    }
-    .endscreen-tropy {
-        display: none;
-    }
 }
 
 @media screen and (max-width:576px) {
@@ -264,26 +261,6 @@ body {
     .navbar-brand img {
         width: 70px;
         height: 70px;
-    }
-    
-    .startscreen-design {
-        font-size: 20px;
-    }
-
-    .text-size-large {
-        font-size: 20px;
-    }
-
-    .text-size-medium {
-        font-size: 16px;
-    }
-
-    .text-size-small {
-        font-size: 14px;
-    }
-
-    .inner-endscreen {
-        font-size: 12px;
     }
 
     .outer-endscreen {
@@ -313,19 +290,19 @@ body {
     }
     
     .text-size-large {
-        font-size: 18px;
+        font-size: 20px;
     }
 
     .text-size-medium {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .text-size-small {
-        font-size: 12px;
+        font-size: 16px;
     }
 
     .inner-endscreen {
-        font-size: 10px;
+        font-size: 14px;
     }
 
 }
@@ -341,11 +318,7 @@ body {
     }
 
     .category {
-        font-size: 12px;
-    }
-
-    .card-question {
-        font-size: small;
+        font-size: 14px;
     }
 
     .outer-endscreen img {
@@ -355,19 +328,19 @@ body {
     }
     
     .text-size-large {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .text-size-medium {
-        font-size: 12px;
+        font-size: 18px;
     }
 
     .text-size-small {
-        font-size: 10px;
+        font-size: 16px;
     }
 
     .inner-endscreen {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .btn-outline-secondary {

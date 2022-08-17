@@ -165,8 +165,8 @@ function createStart() {
 function init() {
     let i = 0;
     document.getElementById('card').innerHTML = createQuestionCard(i, j);
-    document.getElementById('next-button').innerHTML = createNextButton(i);
     document.getElementById('next-button').classList.remove('d-none');
+    document.getElementById('next-button').innerHTML = createNextButton(i);
     createPercentage(i);
     allQuestions(i);
 }
@@ -174,8 +174,8 @@ function init() {
 function initMovies() {
     let i = 1;
     document.getElementById('card').innerHTML = createQuestionCard(i, j);
-    document.getElementById('next-button').innerHTML = createNextButton(i);
     document.getElementById('next-button').classList.remove('d-none');
+    document.getElementById('next-button').innerHTML = createNextButton(i);
     createPercentage(i);
     allQuestions(i);
 }
