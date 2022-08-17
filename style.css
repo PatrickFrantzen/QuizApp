@@ -1,0 +1,376 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: rgba(254, 190, 165, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+}
+
+.quiz-area {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    border-radius: 10px;
+    width: 75vw;
+    height: 75vh;
+}
+
+.navbar {
+    align-items: unset;
+    width: 150px;
+    background-color: rgb(0, 0, 100) !important;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.navbar-brand {
+    margin-right: 0;
+}
+
+.navbar-brand img {
+    width: 100px;
+    height: 100px;
+}
+
+.navbar>.container,
+.navbar>.container-fluid,
+.navbar>.container-lg,
+.navbar>.container-md,
+.navbar>.container-sm,
+.navbar>.container-xl,
+.navbar>.container-xxl {
+    align-items: unset;
+    justify-content: center;
+}
+
+.navbar-brand-themes {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    color: white;
+}
+
+.navbar-brand-themes span {
+    margin: 15px;
+}
+
+.category {
+    cursor: pointer;
+    padding: 5px !important;
+    text-align: center;
+}
+
+.category:hover {
+    background-color: rgba(255, 166, 0, 0.9);
+    border-radius: 10px;
+    color: black;
+}
+
+.text-size-medium {
+    font-size: 18px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.text-size-small {
+    font-size: 16px;
+}
+
+.navbar-brand-themes span {
+    padding: 15px;
+}
+
+.card {
+    border-radius: unset;
+    text-align: center;
+}
+
+.card-question {
+    font-size: medium;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-answer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body-bottomline {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.175);
+}
+
+.card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-hover:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.success, .success:hover {
+    background-color: rgba(2, 207, 2, 0.5);
+}
+
+
+.false, .false:hover {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.btn {
+    border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+    background-color: rgba(0, 0, 100);
+}
+
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    color: var(--bs-btn-disabled-color);
+    pointer-events: none;
+    background-color: rgba(0, 0, 100, 0.1);
+    border-top-color: rgba(0, 0, 100, 0.1);
+    border-bottom-color: rgba(0, 0, 100, 0.1);
+    border-right-color: rgba(0, 0, 100, 0.1);
+    opacity: unset;
+    height: 100%;
+}
+
+.btn-outline-secondary {
+    --bs-btn-hover-bg: rgba(0, 0, 100, 0.7);
+    height: 100%;
+    border-left:0;
+}
+
+.endscreen-design {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.outer-endscreen {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-left: calc(1/4 * 100%);
+}
+
+.outer-endscreen img {
+    margin-bottom: 50px;
+    width: 100px;
+    height: 100px;
+}
+
+.inner-endscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.endscreen-tropy img{
+    width: 100px;
+}
+
+.number {
+    color: orange;
+}
+
+.startscreen-design {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 32px;
+    text-align: center;
+}
+
+.inner-startscreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inner-button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.inner-button button {
+    border-radius: 10px;
+    background-color: orange;
+    color: white;
+    border-color: orange;
+}
+
+.inner-button button:hover {
+    background-color: rgba(255, 166, 0, 0.5);
+    border-color: rgba(255, 166, 0, 0.5);
+    color: black;
+}
+
+.d-none {
+    display: none;
+}
+
+.pointer-none {
+    pointer-events: none;
+}
+
+.progress {
+    width: 100%;
+    margin-top: 10px;
+}
+
+@media screen and (max-width:768px) {
+    .navbar {
+        width: 130px;
+    }
+
+    .navbar-brand img {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .inner-endscreen {
+        font-size: 14px;
+    }
+    
+    .outer-endscreen {
+        margin-left:0;
+    }
+    .endscreen-tropy {
+        display: none;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .navbar {
+        width: 100px;
+    }
+
+    .navbar-brand img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .startscreen-design {
+        font-size: 20px;
+    }
+
+    .text-size-large {
+        font-size: 20px;
+    }
+
+    .text-size-medium {
+        font-size: 16px;
+    }
+
+    .text-size-small {
+        font-size: 14px;
+    }
+
+    .inner-endscreen {
+        font-size: 12px;
+    }
+
+    .outer-endscreen {
+        margin-left:0;
+    }
+
+    .endscreen-tropy {
+        display: none;
+    }
+}
+
+@media screen and (max-width:400px) {
+
+    .navbar {
+        width: 100px;
+    }
+
+    .navbar-brand img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .outer-endscreen img {
+        margin-bottom: 50px;
+        width: 75px;
+        height: 75px;
+    }
+    
+    .text-size-large {
+        font-size: 18px;
+    }
+
+    .text-size-medium {
+        font-size: 14px;
+    }
+
+    .text-size-small {
+        font-size: 12px;
+    }
+
+    .inner-endscreen {
+        font-size: 10px;
+    }
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 399px) {
+    .navbar {
+        width: 80px;
+    }
+
+    .navbar-brand img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .category {
+        font-size: 12px;
+    }
+
+    .card-question {
+        font-size: small;
+    }
+
+    .outer-endscreen img {
+        margin-bottom: 50px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .text-size-large {
+        font-size: 16px;
+    }
+
+    .text-size-medium {
+        font-size: 12px;
+    }
+
+    .text-size-small {
+        font-size: 10px;
+    }
+
+    .inner-endscreen {
+        font-size: 10px;
+    }
+
+    .btn-outline-secondary {
+        padding: 6px;
+    }
+}
