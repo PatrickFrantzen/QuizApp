@@ -190,6 +190,7 @@ function init() {
 
 function common(i, j) {
     document.getElementById('card').innerHTML = createQuestionCard(i, j);
+    document.getElementById('next').disabled = true;
     document.getElementById('next-button').classList.remove('d-none');
     document.getElementById('next-button').innerHTML = createNextButton(i, j);
     document.getElementById('navbar').innerHTML = createNavbar();
@@ -210,6 +211,7 @@ function initMovies() {
 
 function movies(i, j) {
     document.getElementById('card').innerHTML = createQuestionCard(i, j);
+    document.getElementById('next').disabled = true;
     document.getElementById('next-button').classList.remove('d-none');
     document.getElementById('next-button').innerHTML = createNextButton(i, j);
     document.getElementById('navbar').innerHTML = createNavbar();
@@ -282,23 +284,58 @@ function answer(selection, i, j) {
 
 function nextQuestion(i, j) {
     j++;
-    finished(i, j);
+    if (j >= 8) {
+        restartCheck(i, j);
+    } else {
+        finished(i, j);
+    }
 }
 
 function finished(i, j) {
-    if (j > 6) {
-        document.getElementById('card').innerHTML = createEndCard(i);
-        j = -1;
-        numOfRightAnswers = 0;
+    if (j >= 7) {
+        goToEndscreen(i, j);
     } else {
         if (i == 0) {
-            common(i, j);
-        document.getElementById('next').disabled = true;
+            nextCommonQuestion(i, j);
         } else {
-            movies(i, j);
-            document.getElementById('next').disabled = true;
+            nextMovieQuestion(i, j);
         }
     }
+}
+
+function restartCheck(i, j) {
+    if (j >= 8 && i == 0) {
+        restartCommonGame()
+        
+        } else if (j > 7 && i == 1) {
+        restartMovieGame()
+        }
+}
+
+function goToEndscreen(i, j) {
+    j = 8;
+    document.getElementById('card').innerHTML = createEndCard(i);
+    document.getElementById('next-button').innerHTML = createNextButton(i, j);
+    document.getElementById('next').disabled = false;
+
+}
+
+function nextCommonQuestion(i, j) {
+    return common(i, j);
+}
+
+function nextMovieQuestion(i, j) {
+    movies(i, j);
+}
+
+function restartCommonGame() {
+    init();
+    numOfRightAnswers = 0;
+}
+
+function restartMovieGame() {
+    initMovies();
+    numOfRightAnswers = 0;
 }
 
 function createEndCard(i) {
